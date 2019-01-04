@@ -36,7 +36,6 @@ public class FileObjectController {
     }
 
     @RequestMapping(value = "/upload/v2",method = RequestMethod.POST)
-    @ResponseBody
     public FileResponseData uploadv2(MultipartFile file, HttpServletRequest request){
        return fileObjectService.uploadFile(file,request);
     }
@@ -44,6 +43,11 @@ public class FileObjectController {
     @RequestMapping(value = "/upload/base64/v2",method = RequestMethod.POST)
     public FileResponseData uplaodBase64v2(String file, String filename,HttpServletRequest request){
         return fileObjectService.uploadFile(file,filename,request);
+    }
+
+    @RequestMapping(value = "/delete/file",method = RequestMethod.POST)
+    public FileResponseData deleteFile(String fileId,HttpServletRequest request){
+        return fileObjectService.deleteFile(fileId,request);
     }
 
 }

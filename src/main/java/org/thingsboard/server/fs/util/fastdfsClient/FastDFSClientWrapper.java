@@ -199,20 +199,42 @@ public class FastDFSClientWrapper {
         return fileUrl;
     }
 
+//    /**
+//     * 删除文件
+//     * @param fileUrl 文件访问地址
+//     * @return
+//     */
+//    public void deleteFile(String fileUrl) {
+//        if (StringUtils.isEmpty(fileUrl)) {
+//            return;
+//        }
+//        try {
+//            StorePath storePath = StorePath.praseFromUrl(fileUrl);
+//            storageClient.deleteFile(storePath.getGroup(), storePath.getPath());
+//        } catch (FdfsUnsupportStorePathException e) {
+//            log.warn(e.getMessage());
+//        }
+//    }
+
     /**
      * 删除文件
-     * @param fileUrl 文件访问地址
+     * @param fileId 文件id
      * @return
      */
-    public void deleteFile(String fileUrl) {
-        if (StringUtils.isEmpty(fileUrl)) {
-            return;
+    public void deleteFile(String fileId) throws FastDFSException {
+        if (StringUtils.isEmpty(fileId)) {
+            throw new FastDFSException(ErrorCode.FILE_PATH_ISNULL.CODE, ErrorCode.FILE_PATH_ISNULL.MESSAGE);
         }
         try {
-            StorePath storePath = StorePath.praseFromUrl(fileUrl);
+            StorePath storePath = StorePath.praseFromUrl(fileId);
             storageClient.deleteFile(storePath.getGroup(), storePath.getPath());
         } catch (FdfsUnsupportStorePathException e) {
             log.warn(e.getMessage());
+            throw new FastDFSException(ErrorCode.FILE_DELETE_FAILED.CODE, ErrorCode.FILE_DELETE_FAILED.MESSAGE);
+        }  catch (Exception e){
+            log.error(ErrorCode.FILE_DELETE_FAILED.MESSAGE,e);
+//            throw new FastDFSException(ErrorCode.FILE_DELETE_FAILED.CODE, ErrorCode.FILE_DELETE_FAILED.MESSAGE);
+            throw new FastDFSException(ErrorCode.FILE_DELETE_FAILED.CODE, e.getMessage());
         }
     }
 

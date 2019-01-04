@@ -49,6 +49,13 @@ public class FileObjectService {
         return responseData;
     }
 
+    /**
+     * 上传base64文件
+     * @param base64
+     * @param fileName
+     * @param request
+     * @return
+     */
     public FileResponseData uploadFile(String base64,String fileName, HttpServletRequest request){
         FileResponseData responseData = new FileResponseData();
         try{
@@ -60,6 +67,19 @@ public class FileObjectService {
 
             responseData.setHttpUrl(fileServerAddr+"/"+ fileId);
         } catch (FastDFSException e){
+            e.printStackTrace();
+            responseData.setSuccess(false);
+            responseData.setCode(e.getCode());
+            responseData.setMessage(e.getMessage());
+        }
+        return responseData;
+    }
+
+    public FileResponseData deleteFile(String fileId,HttpServletRequest request){
+        FileResponseData responseData = new FileResponseData();
+        try {
+            dfsClient.deleteFile(fileId);
+        } catch (FastDFSException e) {
             e.printStackTrace();
             responseData.setSuccess(false);
             responseData.setCode(e.getCode());
