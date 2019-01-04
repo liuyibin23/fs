@@ -32,13 +32,13 @@ public class FileObjectService {
         FileResponseData responseData = new FileResponseData();
         try {
             // 上传到服务器
-            String filepath = dfsClient.uploadFileWithMultipart(file);
+            String fileId = dfsClient.uploadFileWithMultipart(file);
 
             responseData.setFileName(file.getOriginalFilename());
-            responseData.setFilePath(filepath);
+            responseData.setFileId(fileId);
             responseData.setFileType(FastDFSClientWrapper.getFilenameSuffix(file.getOriginalFilename()));
 
-            responseData.setHttpUrl(fileServerAddr+"/"+filepath);
+            responseData.setHttpUrl(fileServerAddr+"/"+ fileId);
         } catch (FastDFSException e) {
             e.printStackTrace();
             responseData.setSuccess(false);
@@ -46,6 +46,25 @@ public class FileObjectService {
             responseData.setMessage(e.getMessage());
         }
 
+        return responseData;
+    }
+
+    public FileResponseData uploadFile(String base64,String fileName, HttpServletRequest request){
+        FileResponseData responseData = new FileResponseData();
+        try{
+            String fileId = dfsClient.uploadFileWithBase64(base64,fileName);
+
+            responseData.setFileName(fileName);
+            responseData.setFileId(fileId);
+            responseData.setFileType(FastDFSClientWrapper.getFilenameSuffix(fileName));
+
+            responseData.setHttpUrl(fileServerAddr+"/"+ fileId);
+        } catch (FastDFSException e){
+            e.printStackTrace();
+            responseData.setSuccess(false);
+            responseData.setCode(e.getCode());
+            responseData.setMessage(e.getMessage());
+        }
         return responseData;
     }
 

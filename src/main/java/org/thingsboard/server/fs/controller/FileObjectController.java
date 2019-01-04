@@ -41,4 +41,9 @@ public class FileObjectController {
        return fileObjectService.uploadFile(file,request);
     }
 
+    @RequestMapping(value = "/upload/base64/v2",method = RequestMethod.POST)
+    public FileResponseData uplaodBase64v2(String file, String filename,HttpServletRequest request){
+        return fileObjectService.uploadFile(file,filename,request);
+    }
+
 }

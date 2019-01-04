@@ -24,10 +24,10 @@ public class FileResponseData {
     private boolean success = true;
 
     /**
-     * 文件路径
+     * 文件ID
      */
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String filePath;
+    private String fileId;
 
     /**
      * 文件名称
@@ -84,12 +84,12 @@ public class FileResponseData {
         this.success = success;
     }
 
-    public String getFilePath() {
-        return filePath;
+    public String getFileId() {
+        return fileId;
     }
 
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
+    public void setFileId(String fileId) {
+        this.fileId = fileId;
     }
 
     public String getFileName() {

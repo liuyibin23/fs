@@ -97,6 +97,10 @@ public class FastDFSClientWrapper {
         return upload(file);
     }
 
+    public String uploadFileWithBase64(String base64,String filename) throws FastDFSException {
+        return upload(base64,filename);
+    }
+
     /**
      * 使用 MultipartFile 上传
      * @param file MultipartFile
@@ -174,7 +178,8 @@ public class FastDFSClientWrapper {
                 log.debug("upload file success, return path is {}", path);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            log.error(ErrorCode.FILE_UPLOAD_FAILED.MESSAGE,e);
             throw new FastDFSException(ErrorCode.FILE_UPLOAD_FAILED.CODE, ErrorCode.FILE_UPLOAD_FAILED.MESSAGE);
         } finally {
             // 关闭流
@@ -210,6 +215,7 @@ public class FastDFSClientWrapper {
             log.warn(e.getMessage());
         }
     }
+
     public boolean executeDownloadFile(CloseableHttpClient httpClient, String remoteFileUrl, String localFilePath, String charset, boolean closeHttpClient) throws ClientProtocolException, IOException {
         CloseableHttpResponse response = null;
         InputStream in = null;
