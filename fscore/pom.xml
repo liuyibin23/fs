@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.thingsboard.server</groupId>
-    <artifactId>fs</artifactId>
+    <artifactId>fscore</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>fs</name>
     <description>file server based on fastdfs</description>
@@ -47,6 +47,20 @@
             <artifactId>httpclient</artifactId>
             <version>4.5.5</version>
         </dependency>
+
+        <!--应用监控-->
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-server</artifactId>
+            <version>1.5.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-server-ui</artifactId>
+            <version>1.5.7</version>
+        </dependency>
+        <!--应用监控end-->
     </dependencies>
 
     <build>
