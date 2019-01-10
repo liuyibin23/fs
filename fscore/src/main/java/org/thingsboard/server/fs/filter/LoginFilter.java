@@ -20,18 +20,18 @@ public class LoginFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        HttpSession session = ((HttpServletRequest)servletRequest).getSession();
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        String username = "";
-        if (principal instanceof UserDetails) {
-            username = ((UserDetails)principal).getUsername();
-        } else {
-            username = principal.toString();
-        }
-        session.setAttribute("username", username);
-
-        filterChain.doFilter(servletRequest, servletResponse);
+//        HttpSession session = ((HttpServletRequest)servletRequest).getSession();
+//        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//
+//        String username = "";
+//        if (principal instanceof UserDetails) {
+//            username = ((UserDetails)principal).getUsername();
+//        } else {
+//            username = principal.toString();
+//        }
+//        session.setAttribute("username", username);
+//
+//        filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override

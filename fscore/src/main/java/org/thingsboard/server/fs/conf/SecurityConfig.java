@@ -8,14 +8,15 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @Configuration
-@EnableWebSecurity
+//@EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-            .anyRequest().authenticated()
+            .anyRequest().permitAll()
+//                .authenticated()
             .and()
             .formLogin().and()
             .httpBasic();
@@ -29,12 +30,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .withUser("root")
             .password("root")
             .roles("USER").authorities("USER")
-                .and()
-                .withUser("admin").password("admin")
-                .roles("ADMIN", "USER").authorities("ADMIN", "USER")
-                .and()
-                .withUser("user").password("user")
-                .roles("USER").authorities("USER");
+            .and()
+            .withUser("admin").password("admin")
+            .roles("ADMIN", "USER").authorities("ADMIN", "USER")
+            .and()
+            .withUser("user").password("user")
+            .roles("USER").authorities("USER");
     }
 
 }

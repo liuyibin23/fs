@@ -30,5 +30,16 @@ spring:
       suffix: .html
       # 定位页面的目录到static/下
       prefix: /
+  boot:
+     admin:
+       url: http://localhost:8080
+       client:
+         name: fscore
 logging:
   config: classpath:logback.xml
+server:
+  port: 8081
+management:
+  security:
+    #关闭Actuator监控权限
+    enabled: false
