@@ -31,7 +31,7 @@ public class LoginFilter implements Filter {
 //        }
 //        session.setAttribute("username", username);
 //
-//        filterChain.doFilter(servletRequest, servletResponse);
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override

@@ -1,0 +1,14 @@
+spring:
+  data:
+    sql:
+      repositories:
+        enabled: "true"
+  sql:
+    hibernate:
+      ddl-auto: "validate"
+    database-platform: "org.hibernate.dialect.PostgreSQLDialect"
+  datasource:
+    driverClassName: "org.postgresql.Driver"
+    url: "jdbc:postgresql://192.168.232.129:5432/thingsboard"
+    username: "postgres"
+    password: "123456"
