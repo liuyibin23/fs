@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.thingsboard.server.dao.asset.AssetService;
 import org.thingsboard.server.dao.model.sql.AssetEntity;
+import org.thingsboard.server.data.UserAssetOV;
 
 import java.util.List;
 
@@ -26,6 +27,11 @@ public class AssetController {
     @RequestMapping(value = "/asset/all",method = RequestMethod.GET)
     public List<AssetEntity> getAllEntity(){
         return assetService.findAll();
+    }
+
+    @RequestMapping(value = "/asset/user/count",method = RequestMethod.GET)
+    public List<UserAssetOV> getUserAssetCount(){
+        return assetService.findUserAssetCount();
     }
 
 }
