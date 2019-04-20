@@ -10,4 +10,6 @@ public interface AssetService {
     List<AssetEntity> findAll();
 
     List<UserAssetOV> findUserAssetCount();
+
+    List<UserAssetOV> findUserAssetCount2();
 }

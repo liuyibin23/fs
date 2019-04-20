@@ -1,10 +1,7 @@
 package org.thingsboard.server.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.thingsboard.server.dao.asset.AssetService;
 import org.thingsboard.server.dao.model.sql.AssetEntity;
 import org.thingsboard.server.data.UserAssetOV;
@@ -33,5 +30,12 @@ public class AssetController {
     public List<UserAssetOV> getUserAssetCount(){
         return assetService.findUserAssetCount();
     }
-
+    @RequestMapping(value = "/asset/user/count2",method = RequestMethod.GET)
+    public List<UserAssetOV> getUserAssetCount2(){
+        return assetService.findUserAssetCount2();
+    }
+//    @RequestMapping(value = "/asset/user/count",method = RequestMethod.GET,params = {"key1"})
+//    public List<UserAssetOV> getUserAssetCount3(@RequestParam(name = "key1")String key1){
+//        return assetService.findUserAssetCount();
+//    }
 }

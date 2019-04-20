@@ -28,4 +28,9 @@ public class BaseAssetService implements AssetService {
                 .collect(Collectors.toList());
 //        return assetRepository.findUserAssetCount();
     }
+
+    @Override
+    public List<UserAssetOV> findUserAssetCount2() {
+        return assetRepository.findUserAssetCount();
+    }
 }
