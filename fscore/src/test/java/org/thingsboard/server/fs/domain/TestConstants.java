@@ -18,5 +18,5 @@ public class TestConstants {
 
     public static final String PERFORM_FILE_PATH = "/images/gs.jpg";
     public static final String CAT_IMAGE_FILE = "/images/cat.jpg";
-    public static final String XIAO_JIE_JIE_IMG = "images/xiaojiejie.jpg";
+    public static final String XIAO_JIE_JIE_IMG = "/images/xiaojiejie.jpg";
 }
