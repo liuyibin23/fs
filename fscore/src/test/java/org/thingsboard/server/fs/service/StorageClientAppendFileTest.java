@@ -94,9 +94,11 @@ public class StorageClientAppendFileTest extends StorageClientTestBase {
 
         File file = TestUtils.getFile(TestConstants.XIAO_JIE_JIE_IMG);
         int splitSize = 10*1024;//10k
+        String fileName = file.getName();
+        String suffix = fileName.substring(fileName.lastIndexOf(".") + 1);
         log.debug("##初始化文件存储区..##");
         Date now = new Date();
-        StorePath path = initFileStorage(file.length(),splitSize,"jpg");
+        StorePath path = initFileStorage(file.length(),splitSize,suffix);
         log.debug("初始化文件时间：" + ((new Date()).getTime() - now.getTime()));
 
         log.debug("##分割文件..##");
