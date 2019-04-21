@@ -94,12 +94,14 @@ public class StorageClientAppendFileTest extends StorageClientTestBase {
 
         File file = TestUtils.getFile(TestConstants.XIAO_JIE_JIE_IMG);
         int splitSize = 10*1024;//10k
+//        File file = TestUtils.getFile(TestConstants.PDF_BOOK);//大文件上传测试
+//        int splitSize = 10*1024*1024;//10m
         String fileName = file.getName();
         String suffix = fileName.substring(fileName.lastIndexOf(".") + 1);
         log.debug("##初始化文件存储区..##");
         Date now = new Date();
         StorePath path = initFileStorage(file.length(),splitSize,suffix);
-        log.debug("初始化文件时间：" + ((new Date()).getTime() - now.getTime()));
+        log.debug("初始化文件时间：" + ((new Date()).getTime() - now.getTime()) + "ms");
 
         log.debug("##分割文件..##");
         Set<FileEntity> fileEntities = SplitFileUtils.splitFile(file.getAbsolutePath(),splitSize);
@@ -110,7 +112,7 @@ public class StorageClientAppendFileTest extends StorageClientTestBase {
             byte[] fileByte = fileEntity.getFileChunk();
             storageClient.modifyFile(path.getGroup(),path.getPath(),new ByteArrayInputStream(fileByte),fileEntity.getLength(),fileEntity.getFileOffset());
         }
-        log.debug("上传文件时间：" + ((new Date()).getTime() - now.getTime()));
+        log.debug("上传文件时间：" + ((new Date()).getTime() - now.getTime()) + "ms");
         log.debug("##下载文件..##");
         DownloadByteArray callback = new DownloadByteArray();
         byte[] content = storageClient.downloadFile(path.getGroup(), path.getPath(), callback);
