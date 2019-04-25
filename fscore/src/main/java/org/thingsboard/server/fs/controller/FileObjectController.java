@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @RestController
+@RequestMapping("/api/files")
 public class FileObjectController {
 
     @Autowired
@@ -50,4 +51,14 @@ public class FileObjectController {
         return fileObjectService.deleteFile(fileId,request);
     }
 
+    @RequestMapping(value = "/test1",method = RequestMethod.GET)
+    public String authTest1(){
+        return "test1";
+    }
+
+//    @PreAuthorize("hasAnyAuthority('API')")
+    @RequestMapping(value = "/test2",method = RequestMethod.GET)
+    public String authTest2(){
+        return "test2";
+    }
 }
