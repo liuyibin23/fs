@@ -1,4 +1,4 @@
-package org.thingsboard.server.fs.service.security;
+package org.thingsboard.server.fs.service.security.authtoken;
 
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

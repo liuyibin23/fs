@@ -1,4 +1,4 @@
-package org.thingsboard.server.fs.service.security;
+package org.thingsboard.server.fs.service.security.authtoken;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
