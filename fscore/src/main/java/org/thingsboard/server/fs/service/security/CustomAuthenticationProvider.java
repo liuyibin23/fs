@@ -6,6 +6,7 @@ import org.springframework.security.authentication.InternalAuthenticationService
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
@@ -30,7 +31,8 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
             UserDetails user = User.builder()
                     .username("api1")
                     .password("")
-                    .authorities(Role.USER)
+//                    .authorities(Role.USER)
+                    .authorities(new SimpleGrantedAuthority("USER"))
                     .build();
             // 返回新的认证信息，带上 token 和反查出的用户信息
             Authentication auth = new PreAuthenticatedAuthenticationToken(user, token, user.getAuthorities());
@@ -41,7 +43,8 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         UserDetails user = User.builder()
                 .username("api")
                 .password("")
-                .authorities(Role.API)
+//                .authorities(Role.API)
+                .authorities(new SimpleGrantedAuthority("API"))
                 .build();
         // 返回新的认证信息，带上 token 和反查出的用户信息
         Authentication auth = new PreAuthenticatedAuthenticationToken(user, token, user.getAuthorities());
